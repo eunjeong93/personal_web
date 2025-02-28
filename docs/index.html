@@ -4,15 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="https://eunjeong93.github.io/personal_web/">
     <title>Lock Screen</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body>
     <canvas id="canvas"></canvas>
     <div class="lockscreen">
         <div class="lockscreen-content">
-            <img src="IMG_0068.jpg" alt="Profile Photo" class="profile-photo">
+            <img src="./IMG_0068.jpg" alt="Profile Photo" class="profile-photo">
             <h1>Welcome</h1>
             <p>This is Eunjeong's website
             </p>
@@ -21,10 +22,10 @@
             <!-- Social Media Icons -->
             <div class="social-icons">
                 <a href="https://www.linkedin.com/in/eunjeong-a-14a563220/" target="_blank">
-                    <img src="linkedin.png" alt="LinkedIn">
+                    <img src="./linkedin.png" alt="LinkedIn">
                 </a>
                 <a href="https://github.com/eunjeong93/profile" target="_blank">
-                    <img src="github.png" alt="GitHub">
+                    <img src="./github.png" alt="GitHub">
                 </a>
             </div>
         </div>
@@ -44,7 +45,7 @@
 
                 <!-- 오른쪽 정렬된 뒤로가기 버튼 -->
                 <button class="back-button" onclick="goBackToLockScreen()">
-                    <img src="home.png" alt="Back">
+                    <img src="./home.png" alt="Back">
                 </button>
             </div>
         </nav>
@@ -231,19 +232,19 @@
             <h2>Portfolio</h2>
             <div class="portfolio-container">
                 <div class="portfolio-item">
-                    <img src="personal_DB.jpg.webp" alt="Project 1">
+                    <img src="./personal_DB.jpg.webp" alt="Project 1">
                     <h3>Building a Personal Database</h3>
                     <p>Build a personal database in a docker enviornment as a part of personal MLOps system project</p>
                     <a href="https://hashnode.com/edit/cm7dem01t000209jp3il60zcu" target="_blank" class="portfolio-btn">View Project</a>
                 </div>
                 <div class="portfolio-item">
-                    <img src="docker.jpg" alt="Project 2">
+                    <img src="./docker.jpg" alt="Project 2">
                     <h3>Connecting two different docker environments</h3>
                     <p>Connect PostgreSQL container to Python container using network.</p>
                     <a href="https://hashnode.com/edit/cm7kiju5m000109k03o0beuao" target="_blank" class="portfolio-btn">View Project</a>
                 </div>
                 <div class="portfolio-item">
-                    <img src="data_planning.jpg" alt="Project 3">
+                    <img src="./data_planning.jpg" alt="Project 3">
                     <h3>Data Planning</h3>
                     <p>Prepare for the data analysis and plan an analysis senario.</p>
                     <a href="https://hashnode.com/edit/cm7kivriv000108la7chyhrst" target="_blank" class="portfolio-btn">View Project</a>
@@ -271,7 +272,7 @@
         </section>
     </div>
 
-    <script src="script.js"></script>
+    <script src="./script.js"></script>
     <script>
         const canvas = document.getElementById("canvas");
         const ctx = canvas.getContext("2d");
