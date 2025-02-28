@@ -17,14 +17,14 @@ function scrollToExperience() {
 }
 
 // Initialize EmailJS
-emailjs.init('YOUR_USER_ID');  // Replace with your EmailJS user ID
+emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);  // Replace with your EmailJS user ID
 
 // Event listener for email form submission
 document.getElementById('email-form').addEventListener('submit', function (event) {
     event.preventDefault();  // Prevent default form submission
 
     // Send form data via EmailJS
-    emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)  // Replace with your actual service ID and template ID
+    emailjs.sendForm(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, this)  // Replace with your actual service ID and template ID
         .then(function (response) {
             console.log('SUCCESS!', response);
             alert('Your message has been sent!');
