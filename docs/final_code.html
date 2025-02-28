@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lock Screen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <canvas id="canvas"></canvas>
+    <div class="lockscreen">
+        <div class="lockscreen-content">
+            <img src="IMG_0068.jpg" alt="Profile Photo" class="profile-photo">
+            <h1>Welcome</h1>
+            <p>This is Eunjeong's website
+            </p>
+            <!-- <input type="text" id="password" placeholder="Enter 'hello' to unlock" class="long-input"/> -->
+            <button onclick="unlockScreen()" class="arrow-button">Go To Main</button>
+            <!-- Social Media Icons -->
+            <div class="social-icons">
+                <a href="https://www.linkedin.com/in/eunjeong-a-14a563220/" target="_blank">
+                    <img src="linkedin.png" alt="LinkedIn">
+                </a>
+                <a href="https://github.com/eunjeong93/profile" target="_blank">
+                    <img src="github.png" alt="GitHub">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="home-screen" id="home-screen">
+        <!-- 메뉴바 추가 -->
+        <nav class="navbar">
+            <div class="container">
+                <!-- 왼쪽 정렬된 메뉴 -->
+                <ul class="menu">
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+
+                <!-- 오른쪽 정렬된 뒤로가기 버튼 -->
+                <button class="back-button" onclick="goBackToLockScreen()">
+                    <img src="home.png" alt="Back">
+                </button>
+            </div>
+        </nav>
+
+        <!-- <button class="back-arrow" onclick="goBackToLockScreen()">←</button> -->
+
+        <section id="about">
+            <h2>About Me</h2>
+            <p>A data scientist with 7 years of experience across various domains, particularly in supply chain,
+                consistently
+                challenging new paths and technologies to drive innovation and impact. I have extensive experience
+                handling text data,
+                including NLP and LLMs. At my recent company, I played a key role in developing a demand-forecasting
+                model using machine
+                learning algorithms and statistical models, which successfully reduced company costs. Currently, I am
+                focusing on
+                expanding my expertise by taking the lead in projects related to image data handling and MLOps.</p>
+            <div class="skills">
+                <h3>Skills</h3>
+
+                <!-- 스킬 항목 두 개의 컬럼으로 나누기 -->
+                <div class="skills-container">
+                    <div class="skill-item">
+                        <label for="python">Python</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%;"></div>
+                        </div>
+                        <!-- <span class="percentage">90%</span> -->
+                    </div>
+                    <div class="skill-item">
+                        <label for="ml">Machine Learning & Deep Learning</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                        <!-- <span class="percentage">80%</span> -->
+                    </div>
+                    <div class="skill-item">
+                        <label for="data-analysis">Data Analysis</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                        <!-- <span class="percentage">85%</span> -->
+                    </div>
+                    <div class="skill-item">
+                        <label for="sql">SQL</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                        <!-- <span class="percentage">75%</span> -->
+                    </div>
+                    <div class="skill-item">
+                        <label for="python">Big Data Processing & ETL</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 90%;"></div>
+                        </div>
+                        <!-- <span class="percentage">90%</span> -->
+                    </div>
+
+                    <div class="skill-item">
+                        <label for="deep-learning">MLOps</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                        <!-- <span class="percentage">70%</span> -->
+                    </div>
+                    <div class="skill-item">
+                        <label for="nlp">NLP & LLM Applications</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                        <!-- <span class="percentage">85%</span> -->
+                    </div>
+                    <div class="skill-item">
+                        <label for="aws">Cloud Computing & Infrastructure</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 80%;"></div>
+                        </div>
+                        <!-- <span class="percentage">80%</span> -->
+                    </div>
+                    <div class="skill-item">
+                        <label for="big-data">Forecasting & Time Series Analysis</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 85%;"></div>
+                        </div>
+                        <!-- <span class="percentage">70%</span> -->
+                    </div>
+                    <div class="skill-item">
+                        <label for="data-visualization">Data Visualization</label>
+                        <div class="skill-bar">
+                            <div class="skill-progress" style="width: 95%;"></div>
+                        </div>
+                        <!-- <span class="percentage">85%</span> -->
+                    </div>
+                </div>
+            </div>
+            <div class="resume">
+                <h3>Resume</h3>
+                <p>Please click on the link to review my resume. <a
+                        href="https://drive.google.com/drive/folders/1NS_yQmE3AsUMxxWmGvUNNOU77O5VykDE?usp=drive_link"
+                        target="_blank">▸ Go To Download Resume</a></p>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <div class="experience-item">
+                <div class="left">
+                    <h3>Kurly</h3>
+                    <p class="duration">(2023.05 ~ 2024.07)</p>
+                </div>
+                <div class="separator">|</div>
+                <div class="right">
+                    <p class="description">I worked as a data scientist at Kurly, a major e-commerce company in Korea,
+                        similar to Amazon, that provides one-day
+                        delivery. At Kurly, I developed and maintained a demand forecasting model to optimize product
+                        stock levels, saving over
+                        $10,000 per day. I also built personalized product recommendation algorithms and a review image
+                        classification model to
+                        enhance the user experience.</p>
+                    <p class="website"><a href="https://www.kurly.com/main" target="_blank">▸ Go To Kurly Website</a>
+                    </p>
+                </div>
+            </div>
+            <p></p>
+            <div class="experience-item">
+                <div class="left">
+                    <h3>Barogo</h3>
+                    <p class="duration">(2021.10 ~ 2023.03)</p>
+                </div>
+                <div class="separator">|</div>
+                <div class="right">
+                    <p class="description">I worked as a data scientist at Barogo, a logistics company similar to Uber
+                        Eats, providing a one-hour food delivery
+                        service. At Barogo, I led a project to develop an order allocation model for delivery personnel,
+                        collaborating with
+                        cross-functional teams such as the engineering team. I also provided business insights to other
+                        teams based on data
+                        analysis, helping to reduce delivery delays by approximately 20%.</p>
+                    <p class="website"><a href="https://www.barogo.com/" target="_blank">▸ Go To Barogo Website</a></p>
+                </div>
+            </div>
+            <p></p>
+            <div class="experience-item">
+                <div class="left">
+                    <h3>KBDatasystem</h3>
+                    <p class="duration">(2020.03 ~ 2021.09)</p>
+                </div>
+                <div class="separator">|</div>
+                <div class="right">
+                    <p class="description">I worked as a data scientist at KBDataSystem, a financial IT subsidiary in
+                        Korea. At KBDataSystem, I contributed to the
+                        development of an OCR module to improve user experience in the application by building a text
+                        detection system. I also
+                        proposed a strategy for the MyData project, which won a competition. Additionally, I contributed
+                        to the development of a
+                        cloud resource optimization model by creating an anomaly detection model for cloud resources.
+                    </p>
+                    <p class="website"><a href="https://www.kbds.co.kr/global" target="_blank">▸ Go To KBDataSystem
+                            Website</a></p>
+                </div>
+            </div>
+            <p></p>
+            <div class="experience-item">
+                <div class="left">
+                    <h3>VTW</h3>
+                    <p class="duration">(2017.07 ~ 2019.12)</p>
+                </div>
+                <div class="separator">|</div>
+                <div class="right">
+                    <p class="description">I worked as a data analyst at VTW, an IT consulting company specializing in
+                        public service. In this role, I defined
+                        issues in customer systems and provided strategic solutions based on the results of data
+                        analysis. Notable projects
+                        include the development of a ‘Structured Big Data System’ for the National Tax Administration
+                        and the creation of
+                        job-matching algorithms for a Korean job-matching service.</p>
+                    <p class="website"><a href="http://vtw.co.kr/?module=Html&action=SiteComp&sSubNo=4#"
+                            target="_blank">▸ Go To VTW Website</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section id="portfolio">
+            <h2>Portfolio</h2>
+            <div class="portfolio-container">
+                <div class="portfolio-item">
+                    <img src="personal_DB.jpg.webp" alt="Project 1">
+                    <h3>Building a Personal Database</h3>
+                    <p>Build a personal database in a docker enviornment as a part of personal MLOps system project</p>
+                    <a href="https://hashnode.com/edit/cm7dem01t000209jp3il60zcu" target="_blank" class="portfolio-btn">View Project</a>
+                </div>
+                <div class="portfolio-item">
+                    <img src="docker.jpg" alt="Project 2">
+                    <h3>Connecting two different docker environments</h3>
+                    <p>Connect PostgreSQL container to Python container using network.</p>
+                    <a href="https://hashnode.com/edit/cm7kiju5m000109k03o0beuao" target="_blank" class="portfolio-btn">View Project</a>
+                </div>
+                <div class="portfolio-item">
+                    <img src="data_planning.jpg" alt="Project 3">
+                    <h3>Data Planning</h3>
+                    <p>Prepare for the data analysis and plan an analysis senario.</p>
+                    <a href="https://hashnode.com/edit/cm7kivriv000108la7chyhrst" target="_blank" class="portfolio-btn">View Project</a>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="contact">
+            <h2>Contact</h2>
+            <p>Feel free to reach out! You can contact me directly through this form:</p>
+            <p>
+
+            </p>
+            <!-- 이메일 전송 폼 추가 -->
+            <form id="email-form">
+                <!-- Name and Email in the same row -->
+                <div class="input-row">
+                    <input type="text" id="name" name="name" placeholder="Your Name" required />
+                    <input type="email" id="email" name="email" placeholder="Your Email" required />
+                </div>
+                <textarea name="message" id="message" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let particlesArray = [];
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 5 + 1;
+                this.speedX = Math.random() * 3 - 1.5;
+                this.speedY = Math.random() * 3 - 1.5;
+                this.color = `rgba(255, 255, 255, ${Math.random()})`;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+                if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+            }
+            draw() {
+                ctx.fillStyle = this.color;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        function init() {
+            particlesArray = [];
+            for (let i = 0; i < 100; i++) {
+                particlesArray.push(new Particle());
+            }
+        }
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let particle of particlesArray) {
+                particle.update();
+                particle.draw();
+            }
+            requestAnimationFrame(animate);
+        }
+        init();
+        animate();
+    </script>
+</body>
+
+</html>

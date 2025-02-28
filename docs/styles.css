@@ -1,0 +1,515 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: black;
+}
+
+.lockscreen {
+    width: 100%;
+    height: 100vh;
+    /* background: url('background.png') no-repeat center center; */
+    background-size: cover;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lockscreen-content {
+    text-align: center;
+    color: white;
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    padding: 30px;
+    border-radius: 10px;
+    width: 2000px;
+}
+
+input[type="password"] {
+    padding: 10px;
+    width: 80%;
+    margin: 15px 0;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* width: 100px; */
+}
+
+button:hover {
+    background-color: #555;
+}
+
+.home-screen {
+    display: none;
+    text-align: center;
+    padding: 50px;
+    background-color: #fff;
+    color: #333;
+}
+
+.home-screen h2 {
+    font-size: 2rem;
+}
+
+/* 스타일 추가: 홈화면으로 돌아가는 화살표 버튼 */
+.back-arrow {
+    position: absolute;
+    top: 5px;
+    left: 20px;
+    font-size: 30px;
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+}
+
+.back-arrow:hover {
+    color: #555;
+}
+
+.profile-photo {
+    width: 200px; /* 이미지 크기 조절 */
+    height: 200px;
+    border-radius: 80%; /* 원형 이미지 */
+    object-fit: cover; /* 사진 비율 유지 */
+    border: 3px solid white; /* 흰색 테두리 추가 */
+    display: block;
+    margin: 0 auto 15px; /* 중앙 정렬 및 아래쪽 여백 */
+}
+
+/* 메뉴바 스타일 */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 8px 20px;
+    text-align: center;
+    z-index: 1000;
+    height: auto;
+}
+
+.navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.navbar ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+.navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.navbar ul li a:hover {
+    color: #f07408;
+}
+
+/* 부드러운 스크롤 효과 */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 60px; /* 메뉴바의 높이에 맞게 조정 */
+}
+
+/* 섹션 스타일 */
+section {
+    height: auto;
+    padding: 50px 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* 네비게이션 바 스타일 */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px 5px;
+    z-index: 1000;
+    height: 60px;
+}
+
+/* 메뉴와 버튼을 양쪽 끝으로 정렬 */
+.navbar .container {
+    display: flex;
+    justify-content: space-between; /* 좌우 정렬 */
+    align-items: center;
+    width: 100%;
+}
+
+/* 왼쪽 정렬된 메뉴 */
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.menu li a:hover {
+    color: #f4a261;
+}
+
+/* 뒤로가기 버튼 (오른쪽 정렬) */
+.back-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    /* width: 25px; */
+    height: 45px;
+    margin-top: -2px;
+}
+
+.back-button img {
+    width: 25px;
+    height: 25px;
+    filter: invert(1); /* 아이콘을 흰색으로 변경 */
+}
+
+.back-button:hover img {
+    opacity: 0.7;
+}
+
+/* 소셜 아이콘 스타일 */
+.social-icons {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.social-icons a {
+    margin: 0 10px;
+}
+
+.social-icons img {
+    width: 20px; 
+    height: 20px;
+    transition: opacity 0.3s ease;
+}
+
+.social-icons img:hover {
+    opacity: 0.7;
+}
+
+/* LinkedIn & GitHub 아이콘 색상 반전 (검은색 → 흰색) */
+.social-icons a[href*="linkedin"] img,
+.social-icons a[href*="github"] img {
+    filter: invert(1);
+}
+
+/* Input fields (name, email) in the same row */
+.input-row {
+    display: flex;
+    gap: 20px; /* Space between input fields */
+}
+
+input[type="text"], input[type="email"] {
+    width: 48%; /* Adjust width to make them fit side by side */
+    padding: 15px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box; /* Include padding and border in the width calculation */
+}
+
+textarea {
+    width: 100%;
+    padding: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-top: 10px;
+    box-sizing: border-box;
+    height: 250px; /* Adjust the height as needed */
+}
+
+button {
+    padding: 15px 30px;
+    background-color: #f07408;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #f07408;
+}
+
+#email-form {
+    margin-top: 15px; /* 이 값으로 간격을 조정하세요 */
+}
+/* 텍스트 박스를 길게 */
+.long-input {
+    width: 800px; /* 원하는 길이로 조정 */
+    height: 40px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* 화살표 버튼 스타일 */
+.arrow-button {
+    justify-content: center; /* 수평 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    padding: 0; /* 패딩을 제거해서 정확한 크기로 설정 */
+    font-size: 20px; /* 화살표 크기 */
+    background-color: #f07408; /* 원하는 배경색 */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    height: 38px; /* 버튼 높이 */
+    /* width: 38px; 버튼 너비 */
+    width: 150px;
+}
+
+.arrow-button:hover {
+    background-color: #f07408;
+}
+
+#experience {
+    padding: 20px;
+}
+
+.experience-item {
+    display: flex;
+    align-items: flex-start; /* 세로 정렬 */
+    margin-bottom: 20px;
+}
+
+.experience-item .left {
+    display: flex;
+    flex-direction: column; /* 세로 정렬 */
+    align-items: flex-start; /* 왼쪽 정렬 */
+}
+
+.experience-item h3 {
+    color: #4A4A4A; /* 진한 회색 */
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.experience-item .duration {
+    color: #B0B0B0; /* 연한 회색 */
+    font-size: 1rem;
+    white-space: nowrap; /* 텍스트가 한 줄로 표시되게 함 */
+    margin-top: 5px; /* 'Kurly'와 '다닌 날짜' 간 간격 */
+}
+
+.experience-item .separator {
+    color: #f07408; /* 주황색 */
+    font-weight: bold;
+    font-size: 2rem; /* 구분선 크기 */
+    margin: 0 15px; /* 구분선의 좌우 여백 */
+}
+
+.experience-item .right {
+    flex-grow: 1; /* 오른쪽 부분이 공간을 차지하게 함 */
+}
+
+.experience-item .description,
+.experience-item .website {
+    color: #000000; /* 검은색 */
+    font-size: 1rem;
+    margin: 0;
+    text-align: left; /* 왼쪽 정렬 */
+}
+.experience-item .website a {
+    color: #f07408; /* 주황색 */
+    font-size: 1rem;
+    text-decoration: none; /* 밑줄 없애기 */
+}
+
+.experience-item .website a:hover {
+    text-decoration: underline; /* 마우스 오버 시 밑줄 표시 */
+}
+
+h2 {
+    margin-bottom: 20px; /* h2 태그 밑에 20px의 간격 추가 */
+}
+
+#about {
+    margin-bottom: 40px;
+}
+
+#about h2 {
+    margin-bottom: 20px;
+}
+
+#about p {
+    margin-bottom: 30px; /* p 태그 밑에 간격 추가 */
+}
+
+.skills h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: left; /* Skills 제목 왼쪽 정렬 */
+}
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.skill-item {
+    width: 48%; /* 두 개의 컬럼으로 나누기 */
+    margin-bottom: 15px;
+} 
+
+
+.skill-item label {
+    font-size: 15px;
+    font-weight: bold;
+    display: block;
+    color: #4A4A4A;
+    margin-bottom: 5px;
+    text-align: left; /* 기술 이름 왼쪽 정렬 */
+}
+
+.skill-bar {
+    width: 100%;
+    height: 10px;
+    background-color: #e0e0e0; /* 회색 배경 */
+    border-radius: 5px;
+    position: relative;
+}
+
+.skill-progress {
+    height: 100%;
+    background-color: #f07408; /* 주황색 게이지 */
+    border-radius: 5px;
+}
+
+/* 퍼센트 글자 */
+.percentage {
+    position: absolute;
+    top: 0;
+    right: 0; /* 오른쪽 끝에 맞추기 */
+    font-weight: bold;
+    font-size: 14px;
+    color: #4A4A4A; /* 주황색 글자 */
+    margin-right: 10px; /* 오른쪽 끝에 여백을 주어 글자가 잘리지 않게 함 */
+}
+
+.resume h3 {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: left; /* Skills 제목 왼쪽 정렬 */
+}
+.resume p{
+    color: #000000; /* 검은색 */
+    font-size: 1rem;
+    margin: 0;
+    margin-top: 0px;
+    text-align: left; /* 왼쪽 정렬 */
+}
+.resume a {
+    color: #f07408; /* 주황색 */
+    font-size: 1rem;
+    text-decoration: none; /* 밑줄 없애기 */
+}
+
+canvas {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* 콘텐츠보다 뒤로 배치 */
+}
+
+.portfolio-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.portfolio-item {
+    width: 300px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.portfolio-item h3 {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.portfolio-item p {
+    font-size: 14px;
+    color: #666;
+}
+
+.portfolio-btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 15px;
+    background: #f07408;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.portfolio-btn:hover {
+    background: #f07408;
+}
