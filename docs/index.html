@@ -272,6 +272,21 @@
         </section>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            console.log("Initializing EmailJS...");
+
+            if (typeof emailjs !== "undefined") {
+                emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+                console.log("EmailJS Initialized Successfully!");
+            } else {
+                console.error("EmailJS is not defined. Make sure the script is loaded properly.");
+            }
+        });
+    </script>
+
     <script src="./script.js"></script>
     <script>
         const canvas = document.getElementById("canvas");
