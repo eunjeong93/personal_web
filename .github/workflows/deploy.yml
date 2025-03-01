@@ -19,14 +19,11 @@ jobs:
       - name: Pull Vercel Environment Variables
         run: vercel pull --yes --environment=production --token ${{ secrets.VERCEL_TOKEN }}
 
-      - name: Ensure public directory exists
-        run: mkdir -p public  # 📌 public 폴더가 없으면 생성
+      - name: Ensure docs directory exists
+        run: mkdir -p docs  # 📌 docs 폴더 생성
 
-      - name: Create EmailJS Config File
-        run: |
-          echo "window.EMAILJS_PUBLIC_KEY='${{ secrets.EMAILJS_PUBLIC_KEY }}';" > public/config.js
-          echo "window.EMAILJS_SERVICE_ID='${{ secrets.EMAILJS_SERVICE_ID }}';" >> public/config.js
-          echo "window.EMAILJS_TEMPLATE_ID='${{ secrets.EMAILJS_TEMPLATE_ID }}';" >> public/config.js
+      - name: Move files to docs (배포 경로 설정)
+        run: mv * docs/ || true  # 📌 모든 파일을 docs/ 폴더로 이동
 
       - name: Deploy to Vercel
         run: vercel deploy --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
