@@ -35,6 +35,7 @@ jobs:
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages  # GitHub Pages 배포 브랜치
-          folder: docs  # 📌 docs 폴더를 배포
-          clean: true
-          push-force: true
+          folder: docs  # 📌 반드시 docs 폴더를 지정해야 함
+          clean: true  # 📌 기존 파일 유지 (필요하면 false로 변경)
+          push-force: true  # 📌 강제 푸시 (덮어쓰기)
+
