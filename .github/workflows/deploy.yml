@@ -19,6 +19,9 @@ jobs:
       - name: Pull Vercel Environment Variables
         run: vercel pull --yes --environment=production --token ${{ secrets.VERCEL_TOKEN }}
 
+      - name: Ensure public directory exists
+        run: mkdir -p public  # 📌 public 폴더가 없으면 생성
+
       - name: Create EmailJS Config File
         run: |
           echo "window.EMAILJS_PUBLIC_KEY='${{ secrets.EMAILJS_PUBLIC_KEY }}';" > public/config.js
