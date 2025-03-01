@@ -26,6 +26,10 @@ jobs:
           echo "window.EMAILJS_SERVICE_ID='${EMAILJS_SERVICE_ID}' || 'MISSING_SECRET';" >> docs/config.js
           echo "window.EMAILJS_TEMPLATE_ID='${EMAILJS_TEMPLATE_ID}' || 'MISSING_SECRET';" >> docs/config.js
 
+      - name: Verify Generated Config File
+        run: |
+          cat docs/config.js
+          ls -al docs/
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
