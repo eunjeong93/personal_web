@@ -1,4 +1,4 @@
-console.log("Checking EmailJS:", typeof emailjs !== "undefined" ? emailjs : "❌ emailjs is NOT loaded!");
+console.log("script.js loaded!"); 
 
 // Function to unlock the screen immediately when the button is clicked
 function unlockScreen() {
