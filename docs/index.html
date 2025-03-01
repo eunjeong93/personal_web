@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <script src="./config.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <base href="https://eunjeong93.github.io/personal_web/">
     <title>Lock Screen</title>
@@ -279,7 +280,7 @@
             console.log("Initializing EmailJS...");
 
             if (typeof emailjs !== "undefined") {
-                emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);
+                emailjs.init(window.EMAILJS_PUBLIC_KEY);
                 console.log("EmailJS Initialized Successfully!");
             } else {
                 console.error("EmailJS is not defined. Make sure the script is loaded properly.");
