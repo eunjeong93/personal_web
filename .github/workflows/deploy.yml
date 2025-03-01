@@ -1,4 +1,4 @@
-name: Deploy to Vercel
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -13,17 +13,27 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install Vercel CLI
-        run: npm install -g vercel
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
 
-      - name: Pull Vercel Environment Variables
-        run: vercel pull --yes --environment=production --token ${{ secrets.VERCEL_TOKEN }}
+      - name: Install Dependencies
+        run: npm install
 
-      - name: Ensure public directory exists
-        run: mkdir -p public  # 📌 public 폴더 생성
+      - name: Build Project
+        run: npm run build  # ❗ 필요하면 build 명령어 수정
 
-      - name: Move files to public (배포 경로 설정)
-        run: mv * public/ || true  # 📌 모든 파일을 public/ 폴더로 이동
-
-      - name: Deploy to Vercel
-        run: vercel deploy --prod --yes --token ${{ secrets.VERCEL_TOKEN }}
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages  # GitHub Pages 배포 브랜치
+          folder: docs  # ❗ docs 폴더를 배포
+          clean: true
+          
+      - name: Create EmailJS Config File
+        run: |
+          mkdir -p docs
+          echo "window.EMAILJS_PUBLIC_KEY='${{ secrets.EMAILJS_PUBLIC_KEY }}';" > docs/config.js
+          echo "window.EMAILJS_SERVICE_ID='${{ secrets.EMAILJS_SERVICE_ID }}';" >> docs/config.js
+          echo "window.EMAILJS_TEMPLATE_ID='${{ secrets.EMAILJS_TEMPLATE_ID }}';" >> docs/config.js
