@@ -18,20 +18,34 @@ function scrollToExperience() {
     experienceSection.scrollIntoView({ behavior: 'smooth' });
 }
 
-// Initialize EmailJS
-emailjs.init(process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY);  // Replace with your EmailJS user ID
+// 🔥 EmailJS 환경 변수 불러오기
+window.onload = function () {
+    console.log("Loading EmailJS config...");
 
-// Event listener for email form submission
-document.getElementById('email-form').addEventListener('submit', function (event) {
-    event.preventDefault();  // Prevent default form submission
+    fetch("/config.js")  // 📌 환경 변수 불러오기
+        .then(response => response.text())
+        .then(script => {
+            eval(script);  // 📌 config.js 실행 (환경 변수 적용)
 
-    // Send form data via EmailJS
-    emailjs.sendForm(process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID, process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID, this)  // Replace with your actual service ID and template ID
-        .then(function (response) {
-            console.log('SUCCESS!', response);
-            alert('Your message has been sent!');
-        }, function (error) {
-            console.log('FAILED...', error);
-            alert('Something went wrong. Please try again.');
-        });
-});
+            console.log("✅ EmailJS Public Key Loaded:", window.EMAILJS_PUBLIC_KEY);
+
+            // 📌 EmailJS 초기화
+            emailjs.init(window.EMAILJS_PUBLIC_KEY);
+
+            // 📌 이메일 폼 제출 이벤트 리스너 추가
+            document.getElementById('email-form').addEventListener('submit', function (event) {
+                event.preventDefault();  // 기본 제출 방지
+
+                emailjs.sendForm(window.EMAILJS_SERVICE_ID, window.EMAILJS_TEMPLATE_ID, this)
+                    .then(function (response) {
+                        console.log('✅ SUCCESS!', response);
+                        alert('Your message has been sent!');
+                    })
+                    .catch(function (error) {
+                        console.log('❌ FAILED...', error);
+                        alert('Something went wrong. Please try again.');
+                    });
+            });
+        })
+        .catch(error => console.error("❌ Failed to load EmailJS config:", error));
+};
