@@ -18,9 +18,9 @@ jobs:
 
       - name: Create EmailJS Config File
         run: |
-          echo "window.EMAILJS_PUBLIC_KEY='${{ secrets.EMAILJS_PUBLIC_KEY }}';" > docs/config.json
-          echo "window.EMAILJS_SERVICE_ID='${{ secrets.EMAILJS_SERVICE_ID }}';" >> docs/config.json
-          echo "window.EMAILJS_TEMPLATE_ID='${{ secrets.EMAILJS_TEMPLATE_ID }}';" >> docs/config.json
+          echo "window.EMAILJS_PUBLIC_KEY='${{ secrets.EMAILJS_PUBLIC_KEY }}';" > docs/config.js
+          echo "window.EMAILJS_SERVICE_ID='${{ secrets.EMAILJS_SERVICE_ID }}';" >> docs/config.js
+          echo "window.EMAILJS_TEMPLATE_ID='${{ secrets.EMAILJS_TEMPLATE_ID }}';" >> docs/config.js
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
