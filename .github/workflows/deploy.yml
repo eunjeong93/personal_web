@@ -13,27 +13,18 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: '16'
+      - name: Ensure docs directory exists
+        run: mkdir -p docs  # 📌 docs 폴더 생성
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build Project
-        run: npm run build  # ❗ 필요하면 build 명령어 수정
+      - name: Create EmailJS Config File
+        run: |
+          echo "window.EMAILJS_PUBLIC_KEY='${{ secrets.EMAILJS_PUBLIC_KEY }}';" > docs/config.js
+          echo "window.EMAILJS_SERVICE_ID='${{ secrets.EMAILJS_SERVICE_ID }}';" >> docs/config.js
+          echo "window.EMAILJS_TEMPLATE_ID='${{ secrets.EMAILJS_TEMPLATE_ID }}';" >> docs/config.js
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages  # GitHub Pages 배포 브랜치
-          folder: docs  # ❗ docs 폴더를 배포
+          folder: docs  # 📌 docs 폴더를 배포
           clean: true
-          
-      - name: Create EmailJS Config File
-        run: |
-          mkdir -p docs
-          echo "window.EMAILJS_PUBLIC_KEY='${{ secrets.EMAILJS_PUBLIC_KEY }}';" > docs/config.js
-          echo "window.EMAILJS_SERVICE_ID='${{ secrets.EMAILJS_SERVICE_ID }}';" >> docs/config.js
-          echo "window.EMAILJS_TEMPLATE_ID='${{ secrets.EMAILJS_TEMPLATE_ID }}';" >> docs/config.js
