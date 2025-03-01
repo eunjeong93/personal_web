@@ -1,0 +1,26 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches:
+      - main  # 메인 브랜치에 push할 때 실행
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3  # GitHub Repository 코드 가져오기
+
+      - name: Install Vercel CLI
+        run: npm install -g vercel
+
+      - name: Deploy to Vercel
+        run: vercel --token ${{ secrets.VERCEL_TOKEN }} --prod
+
+      - name: Set Up EmailJS Config
+        run: |
+          echo "window.EMAILJS_PUBLIC_KEY='${{ secrets.EMAILJS_PUBLIC_KEY }}';" > public/config.js
+          echo "window.EMAILJS_SERVICE_ID='${{ secrets.EMAILJS_SERVICE_ID }}';" >> public/config.js
+          echo "window.EMAILJS_TEMPLATE_ID='${{ secrets.EMAILJS_TEMPLATE_ID }}';" >> public/config.js
