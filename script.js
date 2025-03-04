@@ -1,5 +1,11 @@
 console.log("script.js loaded!"); 
 
+// 🔹 브라우저가 처음 열렸을 때만 `sessionStorage`를 체크하여 초기 상태를 결정
+if (!sessionStorage.getItem("visited")) {
+    sessionStorage.setItem("visited", "true"); // 최초 방문 여부 설정
+    localStorage.setItem("isUnlocked", "false"); // 무조건 잠금 화면을 보이게 설정
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("Checking Lock Screen Status...");
 
