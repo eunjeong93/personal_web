@@ -43,7 +43,7 @@ function scrollToExperience() {
 window.onload = function () {
     console.log("Loading EmailJS config...");
 
-    fetch("/personal_web/config.js?v=20250303")  // 📌 환경 변수 불러오기
+    fetch("/personal_web/config.js")  // 📌 환경 변수 불러오기
         .then(response => response.text())
         .then(script => {
             eval(script);  // 📌 config.js 실행 (환경 변수 적용)
